@@ -1,6 +1,8 @@
 #ifndef MODULARMATH_H
 #define MODULARMATH_H
 
+// int Multiplicative(int )
+
 
 int ExtendedEuclidAlorithm(int Integer, int Modulo){
 

@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/se00n00/Desktop/CNS/CryptographicEquations/build",
+  "command": "/usr/bin/gcc  -I/home/se00n00/Desktop/CNS/CryptographicEquations/include -g -std=gnu11 -o CMakeFiles/main.dir/src/main.c.o -c /home/se00n00/Desktop/CNS/CryptographicEquations/src/main.c",
+  "file": "/home/se00n00/Desktop/CNS/CryptographicEquations/src/main.c",
+  "output": "CMakeFiles/main.dir/src/main.c.o"
+},
+{
+  "directory": "/home/se00n00/Desktop/CNS/CryptographicEquations/build",
+  "command": "/usr/bin/gcc  -I/home/se00n00/Desktop/CNS/CryptographicEquations/include -g -std=gnu11 -o CMakeFiles/main.dir/src/test.c.o -c /home/se00n00/Desktop/CNS/CryptographicEquations/src/test.c",
+  "file": "/home/se00n00/Desktop/CNS/CryptographicEquations/src/test.c",
+  "output": "CMakeFiles/main.dir/src/test.c.o"
+}
+]
