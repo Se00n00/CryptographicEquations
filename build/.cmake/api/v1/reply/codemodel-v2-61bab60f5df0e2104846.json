@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "main::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-main-Debug-2f70119b4e35a6f52e45.json",
-					"name" : "main",
+					"id" : "CryptographicEquations::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CryptographicEquations-Debug-c0c1f608fb4f7462bef3.json",
+					"name" : "CryptographicEquations",
 					"projectIndex" : 0
 				}
 			]

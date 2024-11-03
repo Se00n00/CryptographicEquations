@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "main"
+			"path" : "CryptographicEquations"
 		}
 	],
 	"backtrace" : 1,
@@ -68,7 +68,7 @@
 			]
 		}
 	],
-	"id" : "main::@6890427a1f51a3e7e1df",
+	"id" : "CryptographicEquations::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -84,8 +84,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "main",
-	"nameOnDisk" : "main",
+	"name" : "CryptographicEquations",
+	"nameOnDisk" : "CryptographicEquations",
 	"paths" : 
 	{
 		"build" : ".",

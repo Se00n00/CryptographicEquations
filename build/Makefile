@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named CryptographicEquations
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+CryptographicEquations: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CryptographicEquations
+.PHONY : CryptographicEquations
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+CryptographicEquations/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CryptographicEquations.dir/build.make CMakeFiles/CryptographicEquations.dir/build
+.PHONY : CryptographicEquations/fast
 
 src/main.o: src/main.c.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CryptographicEquations.dir/build.make CMakeFiles/CryptographicEquations.dir/src/main.c.o
 .PHONY : src/main.c.o
 
 src/main.i: src/main.c.i
@@ -142,7 +142,7 @@ src/main.i: src/main.c.i
 
 # target to preprocess a source file
 src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CryptographicEquations.dir/build.make CMakeFiles/CryptographicEquations.dir/src/main.c.i
 .PHONY : src/main.c.i
 
 src/main.s: src/main.c.s
@@ -150,7 +150,7 @@ src/main.s: src/main.c.s
 
 # target to generate assembly for a file
 src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CryptographicEquations.dir/build.make CMakeFiles/CryptographicEquations.dir/src/main.c.s
 .PHONY : src/main.c.s
 
 src/test.o: src/test.c.o
@@ -158,7 +158,7 @@ src/test.o: src/test.c.o
 
 # target to build an object file
 src/test.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/test.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CryptographicEquations.dir/build.make CMakeFiles/CryptographicEquations.dir/src/test.c.o
 .PHONY : src/test.c.o
 
 src/test.i: src/test.c.i
@@ -166,7 +166,7 @@ src/test.i: src/test.c.i
 
 # target to preprocess a source file
 src/test.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/test.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CryptographicEquations.dir/build.make CMakeFiles/CryptographicEquations.dir/src/test.c.i
 .PHONY : src/test.c.i
 
 src/test.s: src/test.c.s
@@ -174,7 +174,7 @@ src/test.s: src/test.c.s
 
 # target to generate assembly for a file
 src/test.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/test.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CryptographicEquations.dir/build.make CMakeFiles/CryptographicEquations.dir/src/test.c.s
 .PHONY : src/test.c.s
 
 # Help Target
@@ -185,7 +185,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... main"
+	@echo "... CryptographicEquations"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
