@@ -79,4 +79,73 @@ void RowColumnEncryption(char *Message, char *Key){
     char Encryption_Matrix[rows][Key_len];
     char *Ordered_Key = KeyInOrder(Key);
 }
+
+//Encrypt the Given Message and Key Using Row-Column Transposition Cipher
+char *RowColumn(char *Message,int Key[], int Key_len){
+    int Message_len = strlen(Message);
+    int rows;
+    if(Message_len%Key_len == 0){
+        rows = Message_len/Key_len;
+    }else{
+        rows = Message_len/Key_len +1;
+    }
+    char EncryptionMatrix[rows][Key_len];
+    int k = 0;
+    for(int i=0;i<rows;i++){
+        for(int j=0;j<Key_len;j++){
+            if(k<Message_len){
+                EncryptionMatrix[i][j] = Message[k];
+                k++;
+            }else{
+                EncryptionMatrix[i][j] = ' ';
+            }
+        }
+    }
+    char *CryptedMessage = (char *)malloc((rows*Key_len+1)*sizeof(char));
+    int idx = 0;
+    for (int i = 0; i < Key_len; i++) {
+        int col = Key[i]-1;
+        idx = (col*rows);
+        for (int j = 0; j < rows; j++) {
+            CryptedMessage[idx] = EncryptionMatrix[j][i];
+            printf("%c ", CryptedMessage[idx]);
+            idx++;
+            
+        }
+    }   
+
+    CryptedMessage[rows*Key_len] = '\0';
+    return CryptedMessage;
+}
+
+//Decrypt the Given Crypted Message that had been encrypted Using Row-Column Transposiition
+char *RowColumnDecryption(char *CryptedMessage,int Key[], int Key_len){
+    int Message_len = strlen(CryptedMessage);
+    int rows = Message_len/Key_len;
+    char EncryptionMatrix[rows][Key_len];
+
+    int idx = 0;
+    for(int i=0;i<Key_len;i++){
+        for(int j=0;j<rows;j++){
+            EncryptionMatrix[i][j] = CryptedMessage[Key[0]-1];
+        }
+    }
+    char *DecryptedMessage = (char *)malloc((Message_len+1)*sizeof(char));
+    int idx = 0;
+    for (int i = 0; i < Key_len; i++) {
+        int col = Key[i]-1; // Adjusting index to 0-based
+        // printf
+        idx = (col*rows);
+        for (int j = 0; j < rows; j++) {
+            CryptedMessage[idx] = EncryptionMatrix[j][i];
+            printf("%c ", CryptedMessage[idx]);
+            idx++;
+            
+        }
+    }   
+
+    CryptedMessage[rows*Key_len] = '\0';
+    return CryptedMessage;
+}
+
 #endif
