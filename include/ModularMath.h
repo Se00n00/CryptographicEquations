@@ -1,53 +1,144 @@
 #ifndef MODULARMATH_H
 #define MODULARMATH_H
 
+#include<stdlib.h>
 #include<stdarg.h>
 #include<stdbool.h>
 #include<math.h>
 
-// Euler Totent' Function
-// Primality Test
-// Fermat Factoring Method
-
-// Primitive Roots
-
-
-struct modulipairs{
-    long long Modular;
-    long long IntegerValue;
+/* modular: 
+    moduliValue : Decimal Part,
+    modulasValue : Mod Part
+*/
+struct modular{
+    long long moduliValue;
+    long long modulasValue;
 };
-typedef struct modulipairs Moduli;
+typedef struct modular Modulus;
 
-bool IsRelativePrimes(long long Num1,long long Num2);
-bool IsPrimitiveRoot(long long Number1, long long Number2);
+Modulus *ModularAddition(Modulus Mod1, Modulus Mod2);
+Modulus *ModularSubtraction(Modulus Mod1, Modulus Mod2);
+Modulus *ModularDivison(Modulus Mod1, Modulus Mod2);
+Modulus *ModularMultiplication(Modulus Mod1, Modulus Mod2);
+long long ModAddition(long long Number1, long long Number2, long long Modulus);
+long long ModSubtraction(long long Number1, long long Number2, long long Modulus);
+long long ModDivison(long long Number1, long long Number2, long long Modulus);
+long long ModMultiplication(long long Number1, long long Number2, long long Modulus);
+bool IsPrimitiveRoot(long long N, long long Prime_N);
 long long MultiEuclidAlgoriithm(int Count_Of_Numbers, long long Numbers[]);
 long long EuclidAlgorithm(long long Num1, long long Num2);
 long long ExtendedEuclidAlorithm(long long Number, long long Modulo);
-long long MultipleModuli(int Count_Of_Moduli, Moduli Pairs[]);
+long long MultipleModuli(int Count_Of_Moduli, Modulus Pairs[]);
+long long MultiplicativeInverse(long long Number, long long Modulo);
+
+Modulus *ModularAddition(Modulus Mod1, Modulus Mod2){
+    Mod1.moduliValue %= Mod1.modulasValue;
+    Mod2.moduliValue %= Mod2.modulasValue;
+
+    Modulus *temp = (Modulus *)malloc(sizeof(Modulus));
+    temp->moduliValue = 0;
+    temp->modulasValue = 0;
+
+    // If the Mod Values of both Input Don't Matches
+    if(Mod1.modulasValue != Mod2.modulasValue){
+        return temp;
+    }
+
+    temp->modulasValue = Mod1.modulasValue;
+    temp->moduliValue = (Mod1.moduliValue + Mod2.moduliValue) % temp->modulasValue;
+
+    return temp;
+}
+
+long long ModAddition(long long Number1, long long Number2, long long Modulus){
+    Number1 %= Modulus;
+    Number2 %= Modulus;
+
+    return (Number1 + Number2) % Modulus;
+}
+
+Modulus *ModularSubtraction(Modulus Mod1, Modulus Mod2){
+    Mod1.moduliValue %= Mod1.modulasValue;
+    Mod2.moduliValue %= Mod2.modulasValue;
+
+    Modulus *temp = (Modulus *)malloc(sizeof(Modulus));
+    temp->moduliValue = 0;
+    temp->modulasValue = 0;
+
+    // If the Mod Values of both Input Don't Matches
+    if(Mod1.modulasValue != Mod2.modulasValue){
+        return temp;
+    }
+
+    temp->modulasValue = Mod1.modulasValue;
+    temp->moduliValue = (Mod1.moduliValue - Mod2.moduliValue) % temp->modulasValue;
+
+    return temp;
+}
+
+long long ModSubtraction(long long Number1, long long Number2, long long Modulus){
+    Number1 %= Modulus;
+    Number2 %= Modulus;
+
+    return (Number1 - Number2) % Modulus;
+}
+
+Modulus *ModularDivison(Modulus Mod1, Modulus Mod2){
+    Mod1.moduliValue %= Mod1.modulasValue;
+    Mod2.moduliValue %= Mod2.modulasValue;
+
+    Modulus *temp = (Modulus *)malloc(sizeof(Modulus));
+    temp->moduliValue = 0;
+    temp->modulasValue = 0;
+
+    // If the Mod Values of both Input Don't Matches
+    if(Mod1.modulasValue != Mod2.modulasValue){
+        return temp;
+    }
+
+    temp->modulasValue = Mod1.modulasValue;
+    temp->moduliValue = (Mod1.moduliValue / Mod2.moduliValue) % temp->modulasValue;
+
+    return temp;
+}
+
+long long ModDivison(long long Number1, long long Number2, long long Modulus){
+    Number1 %= Modulus;
+    Number2 %= Modulus;
+
+    return (Number1 / Number2) % Modulus;
+}
+
+Modulus *ModularMultiplication(Modulus Mod1, Modulus Mod2){
+    Mod1.moduliValue %= Mod1.modulasValue;
+    Mod2.moduliValue %= Mod2.modulasValue;
+
+    Modulus *temp = (Modulus *)malloc(sizeof(Modulus));
+    temp->moduliValue = 0;
+    temp->modulasValue = 0;
+
+    // If the Mod Values of both Input Don't Matches
+    if(Mod1.modulasValue != Mod2.modulasValue){
+        return temp;
+    }
+
+    temp->modulasValue = Mod1.modulasValue;
+    temp->moduliValue = (Mod1.moduliValue * Mod2.moduliValue) % temp->modulasValue;
+
+    return temp;
+}
+
+long long ModMultiplication(long long Number1, long long Number2, long long Modulus){
+    Number1 %= Modulus;
+    Number2 %= Modulus;
+
+    return (Number1 * Number2) % Modulus;
+}
 
 /* Returns True if Inputs are relative prime, false otherwise */
 bool IsRelativePrimes(long long Num1,long long Num2){
     return (EuclidAlgorithm(Num1,Num2) == 1)?true:false;
 }
-
-
-// [WOULD REQUIRE EULER TOTENT FUNCTION]
-/* Returns True if Number1 is primitive root of Number2 */
-// bool IsPrimitiveRoot(long long Number1, long long Number2){
-    
-//     bool isprimitiveroot = true;
-//     int Number_Of_Co_primes = 0;
-    
-
-//     for(int i=1;i<Number2;i++){
-//         if( IsRelativePrimes(i,Number2) ){
-//             Number_Of_Co_primes++;
-//         }
-//     }
-//     long long NumberModule[Number_Of_Co_primes];
-//     // for(int )
-//     return isprimitiveroot;
-// }
 
 /* Returns the greatest common divisor of multiple number */
 long long MultiEuclidAlgoriithm(int Count_Of_Numbers, long long Numbers[]){
@@ -117,16 +208,17 @@ long long ExtendedEuclidAlorithm(long long Number, long long Modulo){
     }
     return (T1<0)?Modulo+T1:T1;
 }
+
 /* Returns the Integer that Would Satisfy the muliple modular Conditions
    Input: Count of Moduli pairs*/
-long long MultipleModuli(int Count_Of_Moduli, Moduli Pairs[]){
+long long MultipleModuli(int Count_Of_Moduli, Modulus Pairs[]){
     long long result = 0;
     long long M = 1;
     
     // Check if all are relative primes or not
     long long Moduli[Count_Of_Moduli];
     for(int i=0;i<Count_Of_Moduli;i++){
-        Moduli[i] = Pairs[i].Modular;
+        Moduli[i] = Pairs[i].modulasValue;
     }
     if(MultiEuclidAlgoriithm(Count_Of_Moduli,Moduli) != 1){
         return -1;
@@ -134,15 +226,35 @@ long long MultipleModuli(int Count_Of_Moduli, Moduli Pairs[]){
 
     // Calculate Multiple of all the moduli
     for(int i=0;i<Count_Of_Moduli;i++){
-        M *= Pairs[i].Modular;
+        M *= Pairs[i].modulasValue;
     }
 
     for(int i=0;i<Count_Of_Moduli;i++){
-        long long CurrentM = M/Pairs[i].Modular;
-        long long CurrentMInverse = ExtendedEuclidAlorithm(CurrentM,Pairs[i].Modular);
-        result +=  CurrentM * CurrentMInverse * Pairs[i].IntegerValue;
+        long long CurrentM = M/Pairs[i].modulasValue;
+        long long CurrentMInverse = ExtendedEuclidAlorithm(CurrentM,Pairs[i].modulasValue);
+        result +=  CurrentM * CurrentMInverse * Pairs[i].moduliValue;
     }
 
     return result % M;
+}
+
+/* Return the Multiplicative Inverse of the Modulus */
+Modulus *ModularMultiplicativeInverse(Modulus Mod){
+    Modulus *temp = (Modulus *)malloc(sizeof(Modulus));
+    temp->moduliValue = -1;
+    temp->modulasValue = Mod.modulasValue;
+
+    if( IsRelativePrimes(Mod.moduliValue, Mod.modulasValue)){
+        temp->moduliValue = (Mod.moduliValue, Mod.modulasValue);
+        return temp;
+    }
+    return temp;
+}
+
+long long MultiplicativeInverse(long long Number, long long Modulo){
+    if( IsRelativePrimes(Number, Modulo)){
+        return ExtendedEuclidAlorithm(Number, Modulo);
+    }
+    return -1;
 }
 #endif
