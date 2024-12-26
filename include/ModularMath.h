@@ -24,12 +24,12 @@ long long ModAddition(long long Number1, long long Number2, long long Modulus);
 long long ModSubtraction(long long Number1, long long Number2, long long Modulus);
 long long ModDivison(long long Number1, long long Number2, long long Modulus);
 long long ModMultiplication(long long Number1, long long Number2, long long Modulus);
-bool IsPrimitiveRoot(long long N, long long Prime_N);
 long long MultiEuclidAlgoriithm(int Count_Of_Numbers, long long Numbers[]);
 long long EuclidAlgorithm(long long Num1, long long Num2);
 long long ExtendedEuclidAlorithm(long long Number, long long Modulo);
 long long MultipleModuli(int Count_Of_Moduli, Modulus Pairs[]);
 long long MultiplicativeInverse(long long Number, long long Modulo);
+Modulus *ModularMultiplicativeInverse(Modulus *);
 
 Modulus *ModularAddition(Modulus Mod1, Modulus Mod2){
     Mod1.moduliValue %= Mod1.modulasValue;
@@ -239,13 +239,13 @@ long long MultipleModuli(int Count_Of_Moduli, Modulus Pairs[]){
 }
 
 /* Return the Multiplicative Inverse of the Modulus */
-Modulus *ModularMultiplicativeInverse(Modulus Mod){
+Modulus *ModularMultiplicativeInverse(Modulus *Mod){
     Modulus *temp = (Modulus *)malloc(sizeof(Modulus));
     temp->moduliValue = -1;
-    temp->modulasValue = Mod.modulasValue;
+    temp->modulasValue = Mod->modulasValue;
 
-    if( IsRelativePrimes(Mod.moduliValue, Mod.modulasValue)){
-        temp->moduliValue = (Mod.moduliValue, Mod.modulasValue);
+    if( IsRelativePrimes(Mod->moduliValue, Mod->modulasValue)){
+        temp->moduliValue = (Mod->moduliValue, Mod->modulasValue);
         return temp;
     }
     return temp;
